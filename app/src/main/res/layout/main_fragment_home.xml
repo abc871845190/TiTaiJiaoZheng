@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--    <com.qmuiteam.qmui.widget.QMUITopBar-->
+    <!--        android:id="@+id/fragment_home_title_bar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/bar_green"-->
+    <!--        app:qmui_topbar_title_gravity="center"-->
+    <!--        app:qmui_topbar_title_color="@color/white"-->
+    <!--        app:qmui_topbar_title_text_size="23dp" />-->
     <com.hjq.bar.TitleBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,8 +24,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/gray">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,8 +42,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="50dp"
                     android:text="北京"
-                    android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
             </RelativeLayout>
 
             <LinearLayout
@@ -50,15 +57,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="晴"
-                    android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="/"
-                    android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/fragment_home_temperature_text"
@@ -66,8 +73,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="50dp"
                     android:text="100"
-                    android:textColor="@color/black"
-                    android:textSize="25dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <RelativeLayout
@@ -79,8 +86,8 @@
                     android:layout_width="125dp"
                     android:layout_height="125dp"
                     android:layout_centerInParent="true"
-                    android:src="@mipmap/home_status_error"
-                    android:padding="20dp" />
+                    android:padding="20dp"
+                    android:src="@mipmap/home_status_error" />
 
             </RelativeLayout>
 
@@ -95,8 +102,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="80dp"
                     android:text="当前体态："
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/fragment_home_state_text"
@@ -104,11 +111,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="正常（错误）"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="50dp"
                 android:id="@+id/fragment_home_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

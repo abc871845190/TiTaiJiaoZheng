@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+android:innerRadius         尺寸，内环的半径。
+android:thickness           尺寸，环的厚度
+android:innerRadiusRatio    浮点型，以环的宽度比率来表示内环的半径，
+      例如，如果android:innerRadiusRatio，表示内环半径等于环的宽度除以5，这个值是可以被覆盖的，默认为9.
+android:thicknessRatio      浮点型，以环的宽度比率来表示环的厚度，例如，如果android:thicknessRatio="2"，
+      那么环的厚度就等于环的宽度除以2。这个值是可以被android:thickness覆盖的，默认值是3.
+android:useLevel            boolean值，如果当做是LevelListDrawable使用时值为true，否则为false.-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="11dp"
+    android:shape="ring"
+    android:thickness="3dp"
+    android:useLevel="false">
+
+    <solid android:color="@color/red" />
+</shape>

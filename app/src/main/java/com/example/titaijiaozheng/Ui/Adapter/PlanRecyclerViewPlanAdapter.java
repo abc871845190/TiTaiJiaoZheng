@@ -4,12 +4,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.titaijiaozheng.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,5 +42,14 @@ public class PlanRecyclerViewPlanAdapter extends RecyclerView.Adapter<PlanRecycl
             super(itemView);
             mTextView = itemView.findViewById(R.id.fragment_plan_recyclerView_item_text);
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    public List<String> getStringList() {
+        return mStringList;
     }
 }

@@ -2,22 +2,27 @@ package com.example.titaijiaozheng.Ui.Fragment;
 
 import android.Manifest;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.titaijiaozheng.Base.BaseFragment;
 import com.example.titaijiaozheng.Model.Api;
+import com.example.titaijiaozheng.Model.mainBean.HomePlanListBean;
+import com.example.titaijiaozheng.Model.mainBean.HomePlanTypeOne;
+import com.example.titaijiaozheng.Model.mainBean.HomePlanTypeThree;
+import com.example.titaijiaozheng.Model.mainBean.HomePlanTypeTwo;
 import com.example.titaijiaozheng.R;
+import com.example.titaijiaozheng.Ui.Activity.MainActivity;
+import com.example.titaijiaozheng.Ui.Adapter.HomePlanRecyclerViewAdapter;
 import com.example.titaijiaozheng.Utils.LogUtils;
 import com.example.titaijiaozheng.Utils.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -52,10 +57,31 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
     @Override
     protected void initData() {
         LogUtils.i(this, "init Data ing----");
+        //设置title
+        //mQMUITopBar.setTitle("首页");
         //声明LocationClient类
         mLocationClient = new LocationClient(getActivity().getApplicationContext());
         //权限申请
         permissionVersion();
+
+        //recyclerView配置 模拟数据
+        List<HomePlanListBean> listBeans = new ArrayList<>();
+        HomePlanTypeOne homePlanTypeOne1 = new HomePlanTypeOne(R.drawable.fragment_home_ring_img_one,"今日步数","5200",HomePlanRecyclerViewAdapter.TYPE_ONE);
+        HomePlanTypeOne homePlanTypeOne2 = new HomePlanTypeOne(R.drawable.fragment_home_ring_img_two,"全天心率","86/分",HomePlanRecyclerViewAdapter.TYPE_ONE);
+        HomePlanTypeTwo homePlanTypeTwo = new HomePlanTypeTwo(R.drawable.fragment_home_ring_img_three,"今日提醒","久坐提醒，康复训练提醒",HomePlanRecyclerViewAdapter.TYPE_TWO);
+        List<String> stringList = new ArrayList<>();
+        stringList.add("贴墙站");
+        stringList.add("静态飞鸟");
+        stringList.add("健身球右侧弯");
+        HomePlanTypeThree homePlanTypeThree = new HomePlanTypeThree(R.drawable.fragment_home_ring_img_four,"训练打卡",stringList,HomePlanRecyclerViewAdapter.TYPE_THREE);
+        listBeans.add(homePlanTypeOne1);
+        listBeans.add(homePlanTypeOne2);
+        listBeans.add(homePlanTypeTwo);
+        listBeans.add(homePlanTypeThree);
+        HomePlanRecyclerViewAdapter homePlanRecyclerViewAdapter = new HomePlanRecyclerViewAdapter(listBeans, this.mActivity);
+        fragmentHomeRecyclerView.setAdapter(homePlanRecyclerViewAdapter);
+        fragmentHomeRecyclerView.setLayoutManager(new LinearLayoutManager(this.mActivity));
+
     }
 
     @Override
@@ -63,6 +89,9 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
         LogUtils.i(this, "init Listener ing----");
         //注册监听函数
         mLocationClient.registerLocationListener(myListener);
+
+        //switch监听
+
     }
 
     /**
@@ -202,5 +231,4 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
             new AppSettingsDialog.Builder(this.getActivity()).build().show();
         }
     }
-
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/fragment_home_item_one_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/fragment_home_ring_img_one" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/fragment_home_recyclerView_item_one_data_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="今日步数"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/fragment_home_recyclerView_item_data_one_name_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/fragment_home_recyclerView_item_one_data_name"
+            android:gravity="center_vertical"
+            android:text="："
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/fragment_home_recyclerView_item_one_data_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/fragment_home_recyclerView_item_data_one_name_connect"
+            android:gravity="center_vertical"
+            android:text="5200"
+            android:textSize="18dp" />
+    </RelativeLayout>
+</LinearLayout>

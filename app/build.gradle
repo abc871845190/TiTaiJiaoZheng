@@ -10,7 +10,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -67,7 +67,8 @@ dependencies {
     implementation 'com.shuyu:GSYVideoPlayer:7.1.6'
 
     //QMUI
-    implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
-    def qmui_arch_version = '2.0.0-alpha10'
-    implementation "com.qmuiteam:arch:$qmui_arch_version"
+//    implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
+//    def qmui_arch_version = '2.0.0-alpha10'
+//    implementation "com.qmuiteam:arch:$qmui_arch_version"
+//    implementation 'com.android.support:multidex:1.0.3'
 }

@@ -48,7 +48,23 @@
                     android:text="分析建议" />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
 
+                <com.example.titaijiaozheng.Ui.ViewDIY.GradeProgressBar
+                    android:id="@+id/fragment_data_progressBar"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerInParent="true"
+                    app:normalColor="@color/moccasin"
+                    app:process="60"
+                    app:processStyle="STROKE"
+                    app:progressColor="@color/darkorange"
+                    app:stroke_width="100"
+                    app:textColor="@color/salmon"
+                    app:textSize="50dp" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

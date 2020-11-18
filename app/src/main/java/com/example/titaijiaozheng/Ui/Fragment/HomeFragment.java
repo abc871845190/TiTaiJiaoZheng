@@ -20,6 +20,10 @@ import com.example.titaijiaozheng.Ui.Activity.MainActivity;
 import com.example.titaijiaozheng.Ui.Adapter.HomePlanRecyclerViewAdapter;
 import com.example.titaijiaozheng.Utils.LogUtils;
 import com.example.titaijiaozheng.Utils.ToastUtils;
+import com.scwang.smart.refresh.header.MaterialHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +46,7 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
     @BindView(R.id.fragment_home_temperature_text) TextView fragmentHomeTemperatureText;
     @BindView(R.id.fragment_home_state_text) TextView fragmentHomeStateText;
     @BindView(R.id.fragment_home_recyclerView) RecyclerView fragmentHomeRecyclerView;
+    @BindView(R.id.fragment_home_refreshLayout) SmartRefreshLayout mSmartRefreshLayout;
 
     //BDAbstractLocationListener为7.2版本新增的Abstract类型的监听接口
     //原有BDLocationListener接口暂时同步保留。具体介绍请参考后文第四步的说明
@@ -56,9 +61,6 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
 
     @Override
     protected void initData() {
-        LogUtils.i(this, "init Data ing----");
-        //设置title
-        //mQMUITopBar.setTitle("首页");
         //声明LocationClient类
         mLocationClient = new LocationClient(getActivity().getApplicationContext());
         //权限申请
@@ -82,15 +84,26 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
         fragmentHomeRecyclerView.setAdapter(homePlanRecyclerViewAdapter);
         fragmentHomeRecyclerView.setLayoutManager(new LinearLayoutManager(this.mActivity));
 
+        //refreshLayout配置
+        //刷新头
+        mSmartRefreshLayout.setRefreshHeader(new MaterialHeader(this.getActivity()));
+
     }
 
     @Override
     protected void initListener() {
-        LogUtils.i(this, "init Listener ing----");
         //注册监听函数
         mLocationClient.registerLocationListener(myListener);
 
-        //switch监听
+        //刷新监听
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                ToastUtils.showShortToast(getActivity(),"刷新中...");
+                refreshLayout.finishRefresh(2000);//传入false表示刷新失败
+                ToastUtils.showShortToast(getActivity(),"刷新完毕");
+            }
+        });
 
     }
 

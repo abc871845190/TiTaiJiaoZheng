@@ -25,7 +25,7 @@ public class GradeProgressBar extends View {
     private int strokeWidth = 5;//环形线条宽度
     private int normalColor = Color.parseColor("#778899");//未走颜色
     private int progressColor = Color.parseColor("#dc143c");//已走颜色
-    private Boolean textIsDisplayable = true;//文字是否显示
+    private Boolean textIsDisplayable = false;//文字是否显示
     private int textColor = Color.parseColor("#000000");//文字颜色
     private float textSize = 20;//文字大小
     private int progress = 0;//进度
@@ -33,17 +33,8 @@ public class GradeProgressBar extends View {
     private Paint fontPaint = null;
     private Paint.Style progressStyle = Paint.Style.STROKE;//进度条形式  圆形
 
-
-    public GradeProgressBar(Context context) {
-        super(context);
-    }
-
     public GradeProgressBar(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs, 0);
-    }
-
-    public GradeProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.GradeProgressBar);
         textSize = typedArray.getDimension(R.styleable.GradeProgressBar_textSize, textSize);
         textColor = typedArray.getColor(R.styleable.GradeProgressBar_textColor, textColor);
@@ -55,6 +46,7 @@ public class GradeProgressBar extends View {
         progress = typedArray.getInteger(R.styleable.GradeProgressBar_process, progress);
         progressStyle = typedArray.getInt(R.styleable.GradeProgressBar_processStyle, 0) == 0 ? Paint.Style.STROKE : Paint.Style.FILL;
         typedArray.recycle();
+        initPaint();
     }
 
     /**
@@ -88,7 +80,6 @@ public class GradeProgressBar extends View {
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
         height = MeasureSpec.getSize(heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
 
@@ -122,7 +113,6 @@ public class GradeProgressBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        initPaint();
         mPaint.setColor(normalColor);
         if (progress < 360) {
             //270+progress为未走起点,360 - progress为扫过的角度

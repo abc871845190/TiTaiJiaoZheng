@@ -71,4 +71,13 @@ dependencies {
 //    def qmui_arch_version = '2.0.0-alpha10'
 //    implementation "com.qmuiteam:arch:$qmui_arch_version"
 //    implementation 'com.android.support:multidex:1.0.3'
+    //XUI ui库
+    implementation 'com.github.xuexiangjys:XUI:1.1.5'
+    //MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //Android智能下拉刷新框架-SmartRefreshLayout
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    implementation  'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
+    implementation  'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
+    implementation  'com.scwang.smart:refresh-header-material:2.0.1'    //谷歌刷新头
 }

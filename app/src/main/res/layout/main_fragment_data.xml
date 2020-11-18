@@ -14,57 +14,141 @@
         app:titleColor="@color/white"
         app:titleSize="23dp" />
 
-    <ScrollView
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/fragment_data_refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/fragment_data_btn_record"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp">
+
+                    <Button
+                        android:id="@+id/fragment_data_btn_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="数据记录" />
+
+                    <Button
+                        android:id="@+id/fragment_data_btn_suggest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="分析建议" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                    <com.example.titaijiaozheng.Ui.ViewDIY.GradeProgressBar
+                        android:id="@+id/fragment_data_progressBar"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerInParent="true"
+                        app:normalColor="@color/moccasin"
+                        app:process="60"
+                        app:processStyle="STROKE"
+                        app:progressColor="@color/darkorange"
+                        app:stroke_width="20"
+                        app:textColor="@color/salmon"
+                        app:textIsDisplayable="true"
+                        app:textSize="50dp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:text="数据记录" />
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/fragment_data_btn_suggest"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="25dp"
+                        android:gravity="center_vertical"
+                        android:text="综合评分："
+                        android:textSize="22dp" />
+
+                    <com.xuexiang.xui.widget.progress.ratingbar.ScaleRatingBar
+                        android:id="@+id/fragment_data_ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        app:srb_clickable="false"
+                        app:srb_rating="4"
+                        app:srb_scrollable="false"
+                        app:srb_stepSize="1" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_data_rating_recyclerView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:text="分析建议" />
-            </RelativeLayout>
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <com.example.titaijiaozheng.Ui.ViewDIY.GradeProgressBar
-                    android:id="@+id/fragment_data_progressBar"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_centerInParent="true"
-                    app:normalColor="@color/moccasin"
-                    app:process="60"
-                    app:processStyle="STROKE"
-                    app:progressColor="@color/darkorange"
-                    app:stroke_width="100"
-                    app:textColor="@color/salmon"
-                    app:textSize="50dp" />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+                    <TextView
+                        android:id="@+id/fragment_data_chart_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:text="数据可视化："
+                        android:textSize="20dp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/fragment_data_PieChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_below="@id/fragment_data_chart_name" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:text="分析结果："
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:text="存在的错误体态："
+                        android:textSize="18dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/fragment_data_error_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>

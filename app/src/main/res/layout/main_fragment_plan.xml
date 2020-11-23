@@ -14,121 +14,65 @@
         app:titleColor="@color/white"
         app:titleSize="23dp" />
 
-    <ScrollView
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/fragment_plan_refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="康复方案"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_plan_recyclerView_plan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="康复方案"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="每周训练"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5日"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_plan_recyclerView_plan"
+                    android:layout_width="342dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="每日训练"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2次"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <GridView
+                    android:id="@+id/fragment_plan_recyclerView_planData"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:columnWidth="10dp"
+                    android:numColumns="3"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="计划时长"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="训练项目"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20分钟"
-                        android:textColor="@color/black"
-                        android:textSize="25dp" />
-                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_plan_recyclerView_trainProject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp" />
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:text="训练项目"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_plan_recyclerView_trainProject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
-        </LinearLayout>
-    </ScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>

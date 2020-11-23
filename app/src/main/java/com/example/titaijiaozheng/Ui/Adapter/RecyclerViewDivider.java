@@ -6,7 +6,7 @@ import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * 间距控制
+ * 间距控制  分割线
  */
 public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
     private int space;
@@ -14,7 +14,6 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
     public RecyclerViewDivider(int space) {
         this.space = space;
     }
-
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

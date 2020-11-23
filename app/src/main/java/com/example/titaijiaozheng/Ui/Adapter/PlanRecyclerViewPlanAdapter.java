@@ -4,24 +4,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.titaijiaozheng.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlanRecyclerViewPlanAdapter extends RecyclerView.Adapter<PlanRecyclerViewPlanAdapter.InnerHolder> {
 
-    private List<String> mStringList = new ArrayList<>();
+    private List<String> mStringList;
+    private setOnItemListener mSetOnItemListener = null;
 
-    public PlanRecyclerViewPlanAdapter(List<String> stringList){
+    public PlanRecyclerViewPlanAdapter(List<String> stringList) {
         this.mStringList = stringList;
     }
 
     @NonNull
     @Override
     public PlanRecyclerViewPlanAdapter.InnerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new PlanRecyclerViewPlanAdapter.InnerHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_plan_recyclerview_item,parent,false));
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_plan_recyclerview_item, parent, false);
+        return new PlanRecyclerViewPlanAdapter.InnerHolder(view);
     }
 
     @Override
@@ -41,15 +46,27 @@ public class PlanRecyclerViewPlanAdapter extends RecyclerView.Adapter<PlanRecycl
         public InnerHolder(@NonNull View itemView) {
             super(itemView);
             mTextView = itemView.findViewById(R.id.fragment_plan_recyclerView_item_text);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mSetOnItemListener != null) {
+                        mSetOnItemListener.onItemClick(itemView, getAdapterPosition());
+                    }
+                }
+            });
         }
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
     }
 
     public List<String> getStringList() {
         return mStringList;
+    }
+
+
+    public interface setOnItemListener {
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnItemClickListener(setOnItemListener setOnItemListener) {
+        this.mSetOnItemListener = setOnItemListener;
     }
 }

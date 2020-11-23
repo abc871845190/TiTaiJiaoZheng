@@ -168,7 +168,7 @@ public class DataFragment extends BaseFragment {
     }
 
     /**
-     * 初始化图表的 标题
+     * 初始化图表的 标签
      */
     private void initChartLabel() {
         Legend l = chart.getLegend();
@@ -253,5 +253,6 @@ public class DataFragment extends BaseFragment {
                 ToastUtils.showShortToast(getActivity(), "你点击了第" + position + "个item");
             }
         });
+
     }
 }

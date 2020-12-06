@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingLeft="10dp"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="我是标题！"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/fragment_plan_recyclerView_trainProject_item_subtitle"
@@ -22,4 +22,18 @@
         android:text="我是副标题！.....................................000000000000000000000."
         android:textColor="@color/black"
         android:textSize="15dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/fragment_plan_recyclerView_trainProject_item_player"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+    </FrameLayout>
 </LinearLayout>

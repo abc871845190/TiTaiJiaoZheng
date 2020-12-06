@@ -6,11 +6,13 @@ package com.example.titaijiaozheng.Model.mainBean;
 public class PlanTrainProjectBean {
     String TrainName;
     String TrainDesc;
+    String VideoUrl;
     int TrainFlag;
 
-    public PlanTrainProjectBean(String trainName, String trainDesc, int trainFlag) {
+    public PlanTrainProjectBean(String trainName, String trainDesc, String videoUrl, int trainFlag) {
         TrainName = trainName;
         TrainDesc = trainDesc;
+        VideoUrl = videoUrl;
         TrainFlag = trainFlag;
     }
 
@@ -36,5 +38,13 @@ public class PlanTrainProjectBean {
 
     public void setTrainFlag(int trainFlag) {
         TrainFlag = trainFlag;
+    }
+
+    public String getVideoUrl() {
+        return VideoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        VideoUrl = videoUrl;
     }
 }

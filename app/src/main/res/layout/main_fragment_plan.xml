@@ -17,7 +17,9 @@
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/fragment_plan_refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:srlEnableFooterFollowWhenLoadFinished="true"
+        app:srlEnableOverScrollDrag="true">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"

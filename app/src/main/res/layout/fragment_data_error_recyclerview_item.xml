@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/white"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/fragment_data_error_recyclerView_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="骨盘前倾"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/fragment_data_error_recyclerView_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_data_error_recyclerView_item_name"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/fragment_data_error_recyclerView_item_suggest"
+        android:text="描述信息"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/fragment_data_error_recyclerView_item_enter"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/data_error_enter" />
+
+    <TextView
+        android:id="@+id/fragment_data_error_recyclerView_item_suggest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/fragment_data_error_recyclerView_item_enter"
+        android:text="训练建议"
+        android:textSize="16dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <View
+        android:id="@+id/fragment_data_rating_recyclerView_topLine"
+        android:layout_width="2dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="40dp"
+        android:background="@color/grey" />
+
+    <ImageView
+        android:id="@+id/fragment_data_rating_recyclerView_circle"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/fragment_data_rating_recyclerView_topLine"
+        android:layout_marginLeft="28dp"
+        android:background="@drawable/fragment_data_rating_recyclerciew_item_circle" />
+
+    <View
+        android:id="@+id/fragment_data_rating_recyclerView_rightLine"
+        android:layout_width="40dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/fragment_data_rating_recyclerView_topLine"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/fragment_data_rating_recyclerView_circle"
+        android:background="@color/grey" />
+
+    <View
+        android:id="@+id/fragment_data_rating_recyclerView_bottomLine"
+        android:layout_width="2dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/fragment_data_rating_recyclerView_circle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="40dp"
+        android:background="@color/grey" />
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/fragment_data_rating_recyclerView_rightLine"
+        android:background="@drawable/fragment_data_rating_recyclerview_item_layoutline"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/fragment_data_rating_recyclerView_standard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="xx评分指标"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fragment_data_rating_recyclerView_standard"
+            android:text="："
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/fragment_data_rating_recyclerView_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="xx数值"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/fragment_data_rating_recyclerView_item_defaultStandard_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="标准值="
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/fragment_data_rating_recyclerView_item_defaultStandard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/fragment_data_rating_recyclerView_item_defaultStandard_name"
+            android:text="100"
+            android:textSize="18dp" />
+
+        <com.xuexiang.xui.widget.progress.ratingbar.ScaleRatingBar
+            android:id="@+id/fragment_data_rating_recyclerView_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            app:srb_clearRatingEnabled="false"
+            app:srb_clickable="false"
+            app:srb_numStars="3"
+            app:srb_scrollable="false"
+            app:srb_starHeight="18dp"
+            app:srb_starPadding="8dp"
+            app:srb_starWidth="18dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

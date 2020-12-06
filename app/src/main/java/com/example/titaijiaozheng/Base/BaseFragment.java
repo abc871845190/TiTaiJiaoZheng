@@ -24,7 +24,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(setFragmentLayout(),null,false);
+        mView = inflater.inflate(setFragmentLayout(),container,false);
         return mView;
     }
 

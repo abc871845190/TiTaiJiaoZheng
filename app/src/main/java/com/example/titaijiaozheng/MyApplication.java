@@ -2,7 +2,11 @@ package com.example.titaijiaozheng;
 
 import android.app.Application;
 import android.content.Context;
+
 import androidx.multidex.MultiDex;
+
+import com.xuexiang.xui.XUI;
+
 public class MyApplication extends Application {
     private static Context appContext;
 
@@ -11,9 +15,11 @@ public class MyApplication extends Application {
         super.onCreate();
         appContext = getBaseContext();
         MultiDex.install(this);
+        XUI.init(this);
+        XUI.debug(true);
     }
 
-    public static Context getAppContext(){
+    public static Context getAppContext() {
         return appContext;
     }
 }

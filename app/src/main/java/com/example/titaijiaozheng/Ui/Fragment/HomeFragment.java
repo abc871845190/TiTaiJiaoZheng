@@ -2,9 +2,11 @@ package com.example.titaijiaozheng.Ui.Fragment;
 
 import android.Manifest;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
@@ -27,6 +29,7 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.AppSettingsDialog;
@@ -41,12 +44,18 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
 
 
     public LocationClient mLocationClient = null;
-    @BindView(R.id.fragment_home_location_text) TextView fragmentHomeLocationText;
-    @BindView(R.id.fragment_home_weather_text) TextView fragmentHomeWeatherText;
-    @BindView(R.id.fragment_home_temperature_text) TextView fragmentHomeTemperatureText;
-    @BindView(R.id.fragment_home_state_text) TextView fragmentHomeStateText;
-    @BindView(R.id.fragment_home_recyclerView) RecyclerView fragmentHomeRecyclerView;
-    @BindView(R.id.fragment_home_refreshLayout) SmartRefreshLayout mSmartRefreshLayout;
+    @BindView(R.id.fragment_home_location_text)
+    TextView fragmentHomeLocationText;
+    @BindView(R.id.fragment_home_weather_text)
+    TextView fragmentHomeWeatherText;
+    @BindView(R.id.fragment_home_temperature_text)
+    TextView fragmentHomeTemperatureText;
+    @BindView(R.id.fragment_home_state_text)
+    TextView fragmentHomeStateText;
+    @BindView(R.id.fragment_home_recyclerView)
+    RecyclerView fragmentHomeRecyclerView;
+    @BindView(R.id.fragment_home_refreshLayout)
+    SmartRefreshLayout mSmartRefreshLayout;
 
     //BDAbstractLocationListener为7.2版本新增的Abstract类型的监听接口
     //原有BDLocationListener接口暂时同步保留。具体介绍请参考后文第四步的说明
@@ -68,21 +77,27 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
 
         //recyclerView配置 模拟数据
         List<HomePlanListBean> listBeans = new ArrayList<>();
-        HomePlanTypeOne homePlanTypeOne1 = new HomePlanTypeOne(R.drawable.fragment_home_ring_img_one,"今日步数","5200",HomePlanRecyclerViewAdapter.TYPE_ONE);
-        HomePlanTypeOne homePlanTypeOne2 = new HomePlanTypeOne(R.drawable.fragment_home_ring_img_two,"全天心率","86/分",HomePlanRecyclerViewAdapter.TYPE_ONE);
-        HomePlanTypeTwo homePlanTypeTwo = new HomePlanTypeTwo(R.drawable.fragment_home_ring_img_three,"今日提醒","久坐提醒，康复训练提醒",HomePlanRecyclerViewAdapter.TYPE_TWO);
+        HomePlanTypeOne homePlanTypeOne1 = new HomePlanTypeOne(R.drawable.fragment_home_ring_img_one, "今日步数", "5200", HomePlanRecyclerViewAdapter.TYPE_ONE);
+        HomePlanTypeOne homePlanTypeOne2 = new HomePlanTypeOne(R.drawable.fragment_home_ring_img_two, "全天心率", "86/分", HomePlanRecyclerViewAdapter.TYPE_ONE);
+        HomePlanTypeTwo homePlanTypeTwo = new HomePlanTypeTwo(R.drawable.fragment_home_ring_img_three, "今日提醒", "久坐提醒，康复训练提醒", HomePlanRecyclerViewAdapter.TYPE_TWO);
         List<String> stringList = new ArrayList<>();
         stringList.add("贴墙站");
         stringList.add("静态飞鸟");
         stringList.add("健身球右侧弯");
-        HomePlanTypeThree homePlanTypeThree = new HomePlanTypeThree(R.drawable.fragment_home_ring_img_four,"训练打卡",stringList,HomePlanRecyclerViewAdapter.TYPE_THREE);
+        HomePlanTypeThree homePlanTypeThree = new HomePlanTypeThree(R.drawable.fragment_home_ring_img_four, "训练打卡", stringList, HomePlanRecyclerViewAdapter.TYPE_THREE);
         listBeans.add(homePlanTypeOne1);
         listBeans.add(homePlanTypeOne2);
         listBeans.add(homePlanTypeTwo);
         listBeans.add(homePlanTypeThree);
         HomePlanRecyclerViewAdapter homePlanRecyclerViewAdapter = new HomePlanRecyclerViewAdapter(listBeans, this.mActivity);
         fragmentHomeRecyclerView.setAdapter(homePlanRecyclerViewAdapter);
-        fragmentHomeRecyclerView.setLayoutManager(new LinearLayoutManager(this.mActivity));
+        fragmentHomeRecyclerView.setLayoutManager(new LinearLayoutManager(this.mActivity) {
+            @Override
+            public boolean canScrollVertically() {
+                //return super.canScrollVertically();
+                return false;
+            }
+        });
 
         //refreshLayout配置
         //刷新头
@@ -99,9 +114,9 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                ToastUtils.showShortToast(getActivity(),"刷新中...");
+                ToastUtils.showShortToast(getActivity(), "刷新中...");
                 refreshLayout.finishRefresh(2000);//传入false表示刷新失败
-                ToastUtils.showShortToast(getActivity(),"刷新完毕");
+                ToastUtils.showShortToast(getActivity(), "刷新完毕");
             }
         });
 
@@ -182,26 +197,27 @@ public class HomeFragment extends BaseFragment implements EasyPermissions.Permis
 
     /**
      * 根据地区获取天气
+     *
      * @param city
      */
     private void setWeather(String city) {
         Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://devapi.heweather.net")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                Api api = retrofit.create(Api.class);
-                Call task = api.getWeatherJson();
-                task.enqueue(new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) {
-                        LogUtils.i(getActivity(),"response -> "+response);
-                    }
+                .baseUrl("https://devapi.heweather.net")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api api = retrofit.create(Api.class);
+        Call task = api.getWeatherJson();
+        task.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                LogUtils.i(getActivity(), "response -> " + response);
+            }
 
-                    @Override
-                    public void onFailure(Call call, Throwable t) {
-                        LogUtils.i(getActivity(),"error -> "+t.toString());
-                    }
-                });
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                LogUtils.i(getActivity(), "error -> " + t.toString());
+            }
+        });
     }
 
     /**

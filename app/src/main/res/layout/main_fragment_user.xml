@@ -14,10 +14,84 @@
         app:titleColor="@color/white"
         app:titleSize="23dp" />
 
-    <LinearLayout
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:srlEnableOverScrollDrag="true"
+        app:srlEnablePureScrollMode="true">
 
-    </LinearLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_account_manager"
+                    style="@style/InfoItem.Account"
+                    android:layout_marginTop="5dp"
+                    app:sLeftTextString="帐号管理"
+                    app:sLeftViewMarginLeft="10dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_account_head"
+                    style="@style/InfoItem.Account"
+                    app:sLeftBottomTextString="头像"
+                    app:sLeftViewMarginLeft="10dp">
+
+                    <com.xuexiang.xui.widget.imageview.RadiusImageView
+                        android:id="@+id/user_item_account_head_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/sRightImgId"
+                        android:scaleType="centerCrop"
+                        app:riv_border_color="@color/xui_config_color_gray_4"
+                        app:riv_border_width="0dp"
+                        app:riv_is_circle="true"
+                        app:riv_is_touch_select_mode_enabled="true"
+                        app:srcCompat="@mipmap/user_item_head" />
+                </com.xuexiang.xui.widget.textview.supertextview.SuperTextView>
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_message"
+                    style="@style/InfoItem.Account"
+                    app:sLeftTextString="通知设置"
+                    app:sLeftViewMarginLeft="10dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_account_safe"
+                    style="@style/InfoItem.Account"
+                    app:sLeftTextString="帐号和安全"
+                    app:sLeftViewMarginLeft="10dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_setting"
+                    style="@style/InfoItem.Account"
+                    app:sLeftTextString="设置"
+                    app:sLeftViewMarginLeft="10dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_advice"
+                    style="@style/InfoItem.Account"
+                    android:layout_marginTop="40dp"
+                    app:sLeftTextString="意见反馈"
+                    app:sLeftViewMarginLeft="10dp" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/user_item_about"
+                    style="@style/InfoItem.Account"
+                    android:layout_marginTop="10dp"
+                    app:sLeftTextString="关于"
+                    app:sLeftViewMarginLeft="10dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>
